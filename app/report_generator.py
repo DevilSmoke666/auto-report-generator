@@ -13,7 +13,8 @@ from app.context_builder import build_context
 load_dotenv()
 
 def generate_and_send_report(email: str | None = None, sheet_id: str | None = None, csv_file=None) -> None:
-    """Генерує PDF-звіти з Google Sheets, архівує їх і надсилає на email"""
+    """Генерує PDF-звіти з Google Sheets або CSV, архівує їх і надсилає на email"""
+
     today = datetime.now().strftime("%Y-%m-%d")
     base_dir = os.getenv("REPORTS_DIR", "reports")
     reports_dir = os.path.join(base_dir, today)
@@ -21,12 +22,14 @@ def generate_and_send_report(email: str | None = None, sheet_id: str | None = No
 
     os.makedirs(reports_dir, exist_ok=True)
 
-    # Отримуємо записи
-if csv_file:
-    import pandas as pd
-    data = pd.read_csv(csv_file).to_dict(orient="records")
-else:
-    data = get_sheet_data(sheet_id)
+    # 🟩 Отримуємо записи
+    if csv_file:
+        import pandas as pd
+        data = pd.read_csv(csv_file).to_dict(orient="records")
+    elif sheet_id:
+        data = get_sheet_data(sheet_id)
+    else:
+        raise ValueError("Не передано ні sheet_id, ні csv_file")
 
     pdf_paths = []
 
@@ -43,4 +46,3 @@ else:
         send_email(zip_name, recipient=email)
     else:
         send_email(zip_name)
-        
