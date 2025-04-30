@@ -1,24 +1,18 @@
 # Секрети
-.env
-# ігноруй всі .json крім ключа для GCP
-*.json
-!autoreportbot-5392a52edec4.json
+*.env
+config/credentials.json
 
-
-# Python кеші
+# Тимчасові файли
 __pycache__/
 *.pyc
-*.pyo
 *.log
 
 # Репорти
-/reports/
 *.zip
+/reports/
 
-# Git
-.git
-.gitignore
-
-# IDE/OS
-.DS_Store
+# Інше
 .vscode/
+.idea/
+.DS_Store
+*.tar.gz

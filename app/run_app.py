@@ -1,6 +1,7 @@
 import streamlit as st
 from dotenv import load_dotenv
-import os
+import sys
+
 
 from app.report_generator import generate_and_send_report  # ✅ Абсолютний імпорт
 

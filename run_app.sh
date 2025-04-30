@@ -4,4 +4,5 @@
 export PYTHONPATH=$(pwd)
 
 # Запускаємо Streamlit
-streamlit run app/run_app.py
+streamlit run app/run_app.py --server.port 8080
+
