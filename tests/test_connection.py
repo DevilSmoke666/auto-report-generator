@@ -5,20 +5,26 @@ import smtplib
 from email.message import EmailMessage
 import gspread
 from google.oauth2.service_account import Credentials
+from app.config import GMAIL_CREDENTIALS_PATH
 
 load_dotenv()
+
 
 # 1. Перевірка Google Sheets
 def check_gsheet():
     try:
-        scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
-        creds = Credentials.from_service_account_file("gmail_credentials.json", scopes=scopes)
+        scopes = [
+            "https://www.googleapis.com/auth/spreadsheets",
+            "https://www.googleapis.com/auth/drive",
+        ]
+        creds = Credentials.from_service_account_file(GMAIL_CREDENTIALS_PATH)
         client = gspread.authorize(creds)
         sheet = client.open_by_key(os.getenv("GOOGLE_SHEET_ID"))
         data = sheet.sheet1.get_all_records()
         print(f"[✅] Google Sheets: з'єднання успішне, рядків: {len(data)}")
     except Exception as e:
         print("[❌] Google Sheets: помилка ►", e)
+
 
 # 2. Перевірка Gemini
 def check_gemini():
@@ -29,6 +35,7 @@ def check_gemini():
         print("[✅] Gemini API: відповідь —", response.text.strip())
     except Exception as e:
         print("[❌] Gemini API: помилка ►", e)
+
 
 # 3. Перевірка Email SMTP
 def check_email():
@@ -45,6 +52,7 @@ def check_email():
             print("[✅] Email: повідомлення надіслано!")
     except Exception as e:
         print("[❌] Email: помилка ►", e)
+
 
 # Запуск
 if __name__ == "__main__":

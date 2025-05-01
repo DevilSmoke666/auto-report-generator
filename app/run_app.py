@@ -7,6 +7,7 @@ from app.report_generator import generate_and_send_report  # ✅ Абсолют�
 
 load_dotenv()
 
+
 def main():
     st.set_page_config(page_title="AUTO-REPORT-GENERATOR", layout="centered")
     st.title("📋 AUTO-REPORT-GENERATOR")
@@ -35,6 +36,7 @@ def main():
                     st.success(f"✅ Звіт надіслано на {email}")
                 except Exception as e:
                     st.error(f"❌ Помилка: {e}")
+
 
 if __name__ == "__main__":
     main()

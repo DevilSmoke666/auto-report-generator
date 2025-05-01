@@ -5,13 +5,12 @@ from typing import List, Dict, Optional
 from dotenv import load_dotenv
 from oauth2client.service_account import ServiceAccountCredentials
 
+from app.config import SERVICE_ACCOUNT_PATH  # 🔥 новий імпорт
+
 load_dotenv()
 
 # Область доступу до Google Sheets API
-SCOPE = [
-    "https://spreadsheets.google.com/feeds",
-    "https://www.googleapis.com/auth/drive"
-]
+SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 
 # Значення за замовчуванням
 DEFAULT_SHEET_NAME = os.getenv("GOOGLE_SHEET_ID", "SEO-Звіт")
@@ -21,10 +20,9 @@ def init_gsheet():
     """
     Ініціалізує авторизований клієнт GSpread.
     """
-    creds_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-    if not creds_path:
-        raise ValueError("GOOGLE_APPLICATION_CREDENTIALS не задано у .env")
-    creds = ServiceAccountCredentials.from_json_keyfile_name(creds_path, SCOPE)
+    if not SERVICE_ACCOUNT_PATH:
+        raise ValueError("SERVICE_ACCOUNT_PATH не задано у .env або config.py")
+    creds = ServiceAccountCredentials.from_json_keyfile_name(SERVICE_ACCOUNT_PATH, SCOPE)
     return gspread.authorize(creds)
 
 

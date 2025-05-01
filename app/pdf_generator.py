@@ -1,5 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
 
+
 # 🧩 Функція для генерації PDF з HTML-шаблону
 def generate_pdf(context, output_path):
     # ⬇️ Імпортуємо WeasyPrint лише при необхідності (щоб уникнути помилок у середовищі без libgobject)

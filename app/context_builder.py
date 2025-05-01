@@ -1,6 +1,7 @@
 import os
 from gpt_writer import generate_summary
 
+
 def build_context(record):
     client_name = record.get(os.getenv("CLIENT_NAME_FIELD", "Ім'я клієнта"), "Невідомо")
     task = record.get(os.getenv("TASK_FIELD", "Задача"), "-")
@@ -13,7 +14,7 @@ def build_context(record):
         "task": task,
         "status": status,
         "comments": comments,
-        "date": date
+        "date": date,
     }
     summary = generate_summary(summary_data)
 

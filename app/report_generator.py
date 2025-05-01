@@ -5,14 +5,17 @@ from dotenv import load_dotenv
 
 from app.gsheet import get_sheet_data
 from app.pdf_generator import generate_pdf
-from app.email_sender import send_email
+from app.mailer import send_email
 from app.zipper import zip_reports
 from app.context_builder import build_context
 
 # Завантаження змінних середовища з .env
 load_dotenv()
 
-def generate_and_send_report(email: str | None = None, sheet_id: str | None = None, csv_file=None) -> None:
+
+def generate_and_send_report(
+    email: str | None = None, sheet_id: str | None = None, csv_file=None
+) -> None:
     """Генерує PDF-звіти з Google Sheets або CSV, архівує їх і надсилає на email"""
 
     today = datetime.now().strftime("%Y-%m-%d")
@@ -25,6 +28,7 @@ def generate_and_send_report(email: str | None = None, sheet_id: str | None = No
     # 🟩 Отримуємо записи
     if csv_file:
         import pandas as pd
+
         data = pd.read_csv(csv_file).to_dict(orient="records")
     elif sheet_id:
         data = get_sheet_data(sheet_id)

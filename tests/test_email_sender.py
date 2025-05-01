@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from app.email_sender import send_email
+from app.mailer import send_email
+
 
 class TestEmailSender(unittest.TestCase):
 
@@ -14,6 +15,7 @@ class TestEmailSender(unittest.TestCase):
 
         smtp_instance.login.assert_called_once()
         smtp_instance.send_message.assert_called_once()
+
 
 if __name__ == "__main__":
     unittest.main()

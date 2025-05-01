@@ -21,4 +21,4 @@ google-cloud-sdk/
 google-cloud-cli-470.0.0-linux-x86_64.tar.gz
 google-cloud-cli-470.0.0-linux-x86_64.tar.gz
 
-config/*.json
+app/config/*.json

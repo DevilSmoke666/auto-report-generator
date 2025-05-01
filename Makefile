@@ -1,18 +1,22 @@
+# ▶️ Запуск Streamlit-додатку
 run:
 	PYTHONPATH=. streamlit run app/run_app.py
 
-
+# 🧪 Запуск Pytest
 test:
-	PYTHONPATH=./ python tests/test_connection.py
+	PYTHONPATH=. pytest tests/
 
+# 🎨 Форматування коду
 format:
 	black . --line-length 100
 
+# 🔍 Лінтинг (flake8)
 lint:
 	flake8 . --ignore=E501
 
+# 🚀 Streamlit окремо
 streamlit:
-	streamlit run app/run_app.py
+	streamlit run app/app.py
 
 # 🔄 Запуск усього проєкту (формат, лінт, тести, Streamlit)
 project: format lint unittest
@@ -29,9 +33,13 @@ deploy:
 		--region europe-west1 \
 		--allow-unauthenticated
 
-# 🧪 Юніт-тести з правильним шляхом
+# 🧪 Юніт-тести (з правильним шляхом)
 unittest:
-	PYTHONPATH=./ pytest tests/
+	PYTHONPATH=. pytest tests/
+
+# 🧾 Тестування конфігів окремо
+test-config:
+	PYTHONPATH=. pytest tests/test_config.py
 
 # 🔁 Збірка і деплой
 all: build deploy
