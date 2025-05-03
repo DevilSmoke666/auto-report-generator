@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="{{ lang }}">
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
@@ -83,37 +83,37 @@
             </div>
 
             <div class="section">
-                <div class="section-title">Клієнт</div>
+                <div class="section-title">{{ labels.client }}</div>
                 <div class="value">{{ client }}</div>
             </div>
 
             <div class="section">
-                <div class="section-title">Задача</div>
+                <div class="section-title">{{ labels.task }}</div>
                 <div class="value">{{ task }}</div>
             </div>
 
             <div class="section">
-                <div class="section-title">Статус</div>
+                <div class="section-title">{{ labels.status }}</div>
                 <div class="value">{{ status }}</div>
             </div>
 
             <div class="section">
-                <div class="section-title">Дата</div>
+                <div class="section-title">{{ labels.date }}</div>
                 <div class="value">{{ date }}</div>
             </div>
 
             <div class="section">
-                <div class="section-title">Коментарі</div>
+                <div class="section-title">{{ labels.comments }}</div>
                 <div class="value">{{ comments }}</div>
             </div>
 
             <div class="section">
-                <div class="section-title">Висновок</div>
+                <div class="section-title">{{ labels.summary }}</div>
                 <div class="value">{{ summary }}</div>
             </div>
 
             <div class="footer">
-                Цей звіт згенеровано автоматично за допомогою Python-інструменту.
+                {{ labels.footer }}
             </div>
         </div>
     </div>

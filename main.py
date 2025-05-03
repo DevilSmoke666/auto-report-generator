@@ -1,7 +1,8 @@
 from dotenv import load_dotenv
 from app.gsheet import get_sheet_data
 from app.pdf_generator import generate_pdf
-from app.email_sender import send_email
+from app.mailer import send_email
+
 from app.zipper import zip_reports
 from app.context_builder import build_context
 import os
@@ -24,4 +25,5 @@ for i, record in enumerate(data):
     pdf_paths.append(filename)
 
 zip_reports(pdf_paths, ZIP_NAME)
-send_email(ZIP_NAME)
+send_email(ZIP_NAME, recipient=os.getenv("EMAIL_TO"))
+print(f"[✓] Звіт надіслано на пошту: {os.getenv('EMAIL_TO')}")

@@ -1,18 +1,18 @@
 <html>
   <body style="font-family:Arial,sans-serif; padding:20px;">
-    <h2 style="color:#4CAF50;">✅ Ваш автоматичний звіт готовий</h2>
-    <p>ZIP-файл прикріплено до листа.</p>
-    <a href="#" style="
-       display:inline-block;
-       padding:10px 20px;
-       background-color:#4CAF50;
-       color:white;
-       text-decoration:none;
-       border-radius:5px;
-       font-weight:bold;
-       font-size:16px;">
-       ⬇️ Завантажити звіт
+    <h2 style="color:#4CAF50;">✅ {{ email_title }}</h2>
+    <p>{{ email_intro }}</p>
+    <a href="{{ link }}" style="
+        display:inline-block;
+        padding:10px 20px;
+        background-color:#4CAF50;
+        color:White;
+        text-decoration:none;
+        border-radius:5px;
+        font-weight:bold;
+        font-size:16px;">
+      {{ email_button }}
     </a>
-    <p style="color:#999; font-size:12px;">Генерація виконана ботом 🤖</p>
+    <p style="color:#999; font-size:12px;">{{ email_footer }}</p>
   </body>
 </html>

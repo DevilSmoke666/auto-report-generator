@@ -3,15 +3,14 @@ import pandas as pd  # додай імпорт на початку
 from datetime import datetime
 from dotenv import load_dotenv
 
-from app.gsheet import get_sheet_data
-from app.pdf_generator import generate_pdf
-from app.mailer import send_email
-from app.zipper import zip_reports
-from app.context_builder import build_context
+from .gsheet import get_sheet_data
+from .pdf_generator import generate_pdf
+from .mailer import send_email
+from .zipper import zip_reports
+from .context_builder import build_context
 
 # Завантаження змінних середовища з .env
 load_dotenv()
-
 
 def generate_and_send_report(
     email: str | None = None, sheet_id: str | None = None, csv_file=None
@@ -25,10 +24,9 @@ def generate_and_send_report(
 
     os.makedirs(reports_dir, exist_ok=True)
 
-    # 🟩 Отримуємо записи
+    # ✅ Отримуємо записи
     if csv_file:
         import pandas as pd
-
         data = pd.read_csv(csv_file).to_dict(orient="records")
     elif sheet_id:
         data = get_sheet_data(sheet_id)
@@ -45,8 +43,5 @@ def generate_and_send_report(
         pdf_paths.append(filename)
 
     zip_reports(pdf_paths, zip_name)
-
-    if email:
-        send_email(zip_name, recipient=email)
-    else:
-        send_email(zip_name)
+    send_email(zip_name, recipient=email)
+    print(f"📨 Архів із звітами надіслано на {email}")
