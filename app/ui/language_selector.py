@@ -4,7 +4,7 @@ import streamlit as st
 
 # 🟢 Підтримувані мови
 LANGUAGES = {
-    "Українська": "uk",
+    "Українська": "ua",
     "English": "en"
 }
 

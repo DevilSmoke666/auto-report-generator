@@ -1,0 +1,60 @@
+/* 🔷 Глобальні налаштування */
+body {
+    background: linear-gradient(to right, #f8fafc, #e2e8f0);
+    font-family: 'Inter', sans-serif;
+    color: #1a202c;
+}
+
+/* 🔹 Центрування контенту */
+main > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+/* 🧾 Блок форми */
+.stRadio, .stTextInput, .stFileUploader {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 24px;
+}
+
+/* 📩 Інпут */
+input[type="text"], input[type="email"] {
+    border: 1px solid #cbd5e0;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    width: 100%;
+    transition: box-shadow 0.3s ease;
+    background: #f7fafc;
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+    outline: none;
+}
+
+/* 🟣 Кнопка */
+button[kind="primary"] {
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: white;
+    border-radius: 16px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+button[kind="primary"]:hover {
+    transform: scale(1.05);
+    background: #5a67d8;
+}
