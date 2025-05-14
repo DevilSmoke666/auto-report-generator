@@ -1,0 +1,21 @@
+body.light {
+    background: #f8fafc;
+    color: #1a202c;
+}
+
+body.dark {
+    background: #1a202c;
+    color: #f8fafc;
+}
+
+input, textarea {
+    border-radius: 12px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+button {
+    border-radius: 12px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
