@@ -1,18 +1,45 @@
-# Секрети
+# Секрети та конфігурації середовищ
 *.env
-config/credentials.json
+.env.*
+app/config/credentials.json
+app/config/gmail_credentials.json
+# Якщо є інші специфічні імена файлів з секретами в app/config:
+# app/config/autoreportbot-XYZ.json 
 
-# Тимчасові файли
+# Тимчасові файли Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Логи
 *.log
 
-# Репорти
+# Репорти та архіви
 *.zip
-/reports/
+*.tar.gz
+/reports/ # Весь каталог згенерованих звітів
 
-# Інше
+# Специфічні для IDE та ОС
 .vscode/
 .idea/
 .DS_Store
-*.tar.gz
+Thumbs.db
+
+# Локальні віртуальні середовища
+.venv/
+venv/
+env/
+
+# Завантажені SDK (якщо є локально)
+google-cloud-sdk/
+
+# Файли збірки Python
+build/
+dist/
+*.egg-info/
+
+# Інші файли, які не потрібні в образі
+# наприклад, твій скрипт list_files.py, якщо він тільки для тебе
+# list_files.py 
+# playground.ipynb
